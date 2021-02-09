@@ -30,14 +30,42 @@ def validate_colours(board: list):
     checks if each colour is filled correctly
     returns True if correct, False if not
     '''
-    pass
+    i = 0
+    j = 0
+    new_board = []
+    while i in range(len(board)-1):
+    	my_string = ""
+    	if board[j][i] != "*":
+    		z = j
+    		k = i
+    		while j < (z + 4):
+    			my_string += board[j][i]
+    			j += 1
+    		while k < (i + 5):
+    			if j >= 9:
+    				break
+    			my_string += board[j][k]
+    			k += 1
+    		if j >= 9:
+    			break
+    		j = z + 1
+    		i = 0
+    		new_board.append(my_string)
+    	else:
+    		i += 1
+    if validate_rows(new_board) == True:
+    	return True
+    else:
+    	return False
 
 def validate_board(board: list):
     '''
     main function, validates a puzzle board
     returns True if such board is winning, and False if not
     '''
-    pass
+    if validate_rows(board) and validate_columns(board) and validate_colours(board):
+    	return True
+    return False
 
 
 if __name__ == "__main__":
@@ -52,4 +80,4 @@ if __name__ == "__main__":
  "  8  2***",
  "  2  ****"
 ]
-	print(validate_columns(board))
+	print(validate_board(board))
