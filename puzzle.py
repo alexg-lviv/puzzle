@@ -15,7 +15,15 @@ def validate_columns(board: list):
     checks if colourful columns on board are filled correctly
     returns True if correct, False if not
     '''
-    pass
+    result = []
+    for i in range(len(board)):
+    	my_string = ''
+    	for j in range(len(board)):
+    		my_string += board[j][i]
+    	result.append(my_string)
+    if validate_rows(result):
+    	return True
+    return False
 
 def validate_colours(board: list):
     '''
@@ -23,7 +31,6 @@ def validate_colours(board: list):
     returns True if correct, False if not
     '''
     pass
-
 
 def validate_board(board: list):
     '''
@@ -41,8 +48,8 @@ if __name__ == "__main__":
  "* 4 1****",
  "     9 5 ",
  " 6  83  *",
- "3   1  **",
+ "3   2  **",
  "  8  2***",
  "  2  ****"
 ]
-	print(validate_rows(board))
+	print(validate_columns(board))
